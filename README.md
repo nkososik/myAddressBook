@@ -10,13 +10,37 @@ _This project focuses on the use of BDD, utilizing HTML, CSS, and JS to create a
 
 ## Specifications
 
-| Spec | Input | Output |
-| :-------------     | :------------- | :------------- |
-| **Program Contains places with Appropriate Key-Value-Pairs**| Input: "" | Output: "" |
-| **Program Contains and Uses Constructor (Place) to house Values Inside Place Objects** | User input: "city, country, landmarks, season" | Output: [city, country, landmarks, season] |
-| **Program Contains and Uses Constructor (PlaceList) to house a List of Place Objects** | Input: "Place object" | Output: [Place] |
-| **Program and Site Display List of Cities**| Input: "" | Output: "Portland" |
-| **Program Displays PlaceList Object Array upon Click of the City Name**| Input: "Click: Portland" | Output: "Portland", "United States", ["St. John's Bridge", " Burnside Skatepark", " Multnomah Falls"], "Spring" |
+**Behavior** Takes user input and returns it
+* Input: text
+* Output text
+
+**Behavior** Checks to see if input is empty 
+* Input: empty input
+* Output "Empty or incorrect input"
+
+**Behavior** It creates an Address Book
+* Input: no input necessary 
+* Output: Address Book Object: {contacts: [], currentId: 0}
+
+**Behavior** Program creates a contact
+* Input: User's "first name, last name, phone number, email address, physical address"
+* Output: Contact Object: {firstName, lastName, phoneNumber, emailAddress, physicalAddress}
+
+**Behavior** Program provides contact object's properties
+* Input: "Click" on contact name
+* Output: firstName, lastName, phoneNumber, emailAddress, physicalAddress
+
+**Behavior** Add contact to the address book and assigns Id
+* Input: Contact Object: {firstName: "Sam" , lastName: "Lot" , phoneNumber: "5555556565", emailAddress: "myemail@gmail.com", physicalAddress: "420 Paper Street"}
+* Output: AddressBook Object has 1 contact: {id: 1, firstName: "Sam" , lastName: "Lot" , phoneNumber: "5555556565", emailAddress: "myemail@gmail.com", physicalAddress: "420 Paper Street"}
+
+**Behavior** Program finds contact with given id
+* Input: id 7
+* Output: Contact Object: {id: 7, firstName: "Rex" , lastName: "Burg" , phoneNumber: "1112223434", emailAddress: "youremail@yahoo.com", physicalAddress: "55 E Trail Mix Lane"}
+
+**Behavior** Program deletes contact with given id
+* Input: id 7
+* Output: Contact Object with id 7 has been deleted from the address book
 
 
 ## Setup/Installation Requirements
