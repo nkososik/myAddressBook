@@ -1,3 +1,7 @@
+body {
+  background-color: aquamarine;
+}
+
 #show-contact {
   display: none;
 }
