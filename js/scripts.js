@@ -1,40 +1,40 @@
 // Business Logic for AddressBook ---------
 function AddressBook() { 
-  this.contacts = []; //contacts stored in this array
-  this.currentId = 0; // starting id number, prototype below will incrementely increase for each contact and add as property
-} // constructor for Address Book
+  this.contacts = [];
+  this.currentId = 0;
+}
 
 AddressBook.prototype.addContact = function(contact) { 
-  contact.id = this.assignId(); // references prototype below, assigns unique id, increments, then pushing it into contacts array in AddressBook
+  contact.id = this.assignId(); 
   this.contacts.push(contact);
-} // prototype stores method to add contacts
+} 
 
 AddressBook.prototype.assignId = function() { 
   this.currentId += 1;
   return this.currentId;
-} // prototype stores method to add to id number creating unique id for each entry
+} 
 
-AddressBook.prototype.findContact = function(id) { //id referencing unique id assigned to each contact (you put in unique id you are trying to find)
-  for (let i = 0; i < this.contacts.length; i++) { //method loops through AddressBook objects contacts array checking each entry's id against id provided to the findContact() method as argument
-    if (this.contacts[i]) { // on check an array element id property if that element is a contact
-      if (this.contacts[i].id == id) { //when match is found
-        return this.contacts[i]; //method returns contact with the specific id referenced
+AddressBook.prototype.findContact = function(id) { 
+  for (let i = 0; i < this.contacts.length; i++) { 
+    if (this.contacts[i]) { 
+      if (this.contacts[i].id == id) { 
+        return this.contacts[i]; 
       }
     }
   };
-  return false; //else it returns false for id not existing
+  return false;
 }
 
-AddressBook.prototype.deleteContact = function(id) { //prototype creates method to delete contact
-  for (let i = 0; i < this.contacts.length; i++) { //loops through contact array
-    if (this.contacts[i]) { //checks an array to see if id is there
-      if (this.contacts[i].id == id) { //until matching id is found
-        delete this.contacts[i]; // then deletes contact with matching id
+AddressBook.prototype.deleteContact = function(id) {
+  for (let i = 0; i < this.contacts.length; i++) {
+    if (this.contacts[i]) {
+      if (this.contacts[i].id == id) {
+        delete this.contacts[i];
         return true; 
       }
     }
   };
-  return false; // returns false if no matching id is found
+  return false;
 }
 
 // Business Logic for Contacts ----------
@@ -42,8 +42,23 @@ function Contact(firstName, lastName, phoneNumber) {
   this.firstName = firstName;
   this.lastName = lastName;
   this.phoneNumber = phoneNumber;
-} // constructor for a contact
+} 
 
 Contact.prototype.fullName = function() {
   return this.firstName + " " + this.lastName;
-} // prototype for return a full name
+} 
+
+// User Interface Logic --------
+let addressBook = new AddressBook
+
+$(document).ready(function() {
+  $("form#new-contact").submit(function(event) {
+    event.preventDefault();
+    const inputtedFirstName = $("input#new-first-name").val();
+    const inputtedLastName = $("input#new-last-name").val();
+    const inputedPhoneNumber = $("input#new-phone-number").val();
+    let newcontact = new Contact(inputtedFirstName, inputtedLastName, inputedPhoneNumber);
+    addressBook.addContact(newcontact);
+    console.log(addressBook.contacts)
+  })
+})
